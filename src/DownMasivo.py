@@ -1,4 +1,3 @@
-# filepath: /youtube-downloader-exe/youtube-downloader-exe/src/DownMasivo.py
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import threading
@@ -9,7 +8,6 @@ import subprocess
 import yt_dlp
 from pathlib import Path
 
-# Constants
 CONFIG_FILE = "config.json"
 DEFAULT_FONT = ("Segoe UI", 10)
 ACCENT_COLOR = "#4a6fa5"
@@ -53,7 +51,6 @@ class VideoDownloaderApp:
         self.root.resizable(False, False)
         self.root.configure(bg=DARK_BG)
 
-        # Establece el icono de la ventana
         try:
             import sys, os
             if getattr(sys, 'frozen', False):
@@ -63,7 +60,7 @@ class VideoDownloaderApp:
             icon_path = os.path.join(base_path, "icono.ico")
             self.root.iconbitmap(icon_path)
         except Exception as e:
-            pass  # Si falla, simplemente ignora el error
+            pass
 
         self.style = ttk.Style()
         self.style.theme_use('alt')
@@ -159,7 +156,7 @@ class VideoDownloaderApp:
             download_dir = config["download_dir"]
             os.makedirs(download_dir, exist_ok=True)
 
-            ffmpeg_path = get_ffmpeg_path()  # <--- usa tu función
+            ffmpeg_path = get_ffmpeg_path()
 
             ydl_opts = {
                 "outtmpl": os.path.join(download_dir, "%(title)s.%(ext)s"),
@@ -169,7 +166,7 @@ class VideoDownloaderApp:
                 "quiet": True,
                 "no_warnings": True,
                 "cookiefile": "cookies.txt" if any(site in url for site in ["instagram.com", "twitter.com"]) else None,
-                "ffmpeg_location": ffmpeg_path,  # <--- agrega esta línea
+                "ffmpeg_location": ffmpeg_path,
             }
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -236,7 +233,6 @@ class VideoDownloaderApp:
                 webm_path
             ]
 
-            # Only use CREATE_NO_WINDOW on Windows
             creationflags = 0
             if sys.platform == "win32":
                 creationflags = subprocess.CREATE_NO_WINDOW
@@ -376,7 +372,6 @@ class VideoDownloaderApp:
 
         ttk.Button(cfg_frame, text="Guardar configuración", command=save_changes).pack(pady=(20, 0))
 
-# Run the app
 if __name__ == "__main__":
     root = tk.Tk()
     app = VideoDownloaderApp(root)

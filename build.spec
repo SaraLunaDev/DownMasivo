@@ -28,8 +28,8 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,  # <--- disables console window
-    icon='icono.ico'  # <--- aquí pones el nombre de tu icono
+    console=False,
+    icon='icono.ico'
 )
 
 coll = COLLECT(

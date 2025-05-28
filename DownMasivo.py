@@ -7,6 +7,7 @@ import yt_dlp
 from pathlib import Path
 import glob
 import datetime
+import sys
 
 CONFIG_FILE = "config.json"
 DEFAULT_FONT = ("Segoe UI", 13)
@@ -19,6 +20,13 @@ default_config = {
     "convert_to_webm": False,
     "last_format": "MP4"
 }
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 def get_ffmpeg_path():
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -53,7 +61,7 @@ config = load_config()
 class VideoDownloaderApp(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.iconbitmap("icono.ico")  # <-- Add this line
+        self.iconbitmap(resource_path("resources/icono.ico"))
         self.title(" DownMasivo")
         self.geometry("450x120")
         self.resizable(False, False)

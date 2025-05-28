@@ -3,10 +3,15 @@
 block_cipher = None
 
 a = Analysis(
-    ['src/DownMasivo.py'],
+    ['DownMasivo.py'],
     pathex=[],
     binaries=[],
-    datas=[('ffmpeg/ffmpeg.exe', 'ffmpeg')],
+    datas=[
+        ('ffmpeg/ffmpeg.exe', 'ffmpeg'),
+        ('ffmpeg/ffplay.exe', 'ffmpeg'),
+        ('ffmpeg/ffprobe.exe', 'ffmpeg'),
+        ('resources/icono.ico', 'resources'),
+    ],
     hiddenimports=[],
     hookspath=[],
     runtime_hooks=[],
@@ -29,7 +34,7 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
-    icon='icono.ico'
+    icon='resources/icono.ico'
 )
 
 coll = COLLECT(

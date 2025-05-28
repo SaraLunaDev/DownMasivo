@@ -1,4 +1,4 @@
-# [Download DownMasivo](https://github.com/SaraLunaDev/DownMasivo/releases/download/DownMasivo/DownMasivo.zip)
+# [Download DownMasivo](https://github.com/SaraLunaDev/DownMasivo/releases/download/DownMasivo2/DownMasivo.zip)
 
 - _App to Download Videos from any Platform_
 
